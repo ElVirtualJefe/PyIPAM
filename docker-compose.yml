@@ -1,0 +1,44 @@
+version: '3'
+services:
+  pyipam-app:
+#    image: PyIPAM-app
+    restart: always
+#    env_file: .env
+    build: .
+    ports:
+      - "5005:5005"
+    networks:
+      - db_network
+      - web_network
+    depends_on: 
+      - pyipam-postgres
+  nginx:
+    restart: always
+    image: "nginx:latest"
+    ports:
+      - "85:85"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - web_network
+    depends_on: 
+      - pyipam-app
+  pyipam-postgres:
+#    image: PyIPAM-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: PyIPAM-P@ssw0rd123!
+      POSTGRES_DB: PyIPAM
+    image: postgres:latest
+    networks:
+      - db_network
+    ports:
+      - 5432:5432
+    restart: always
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+networks:
+  db_network:
+    driver: bridge
+  web_network:
+    driver: bridge
