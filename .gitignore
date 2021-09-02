@@ -3,10 +3,12 @@ flask/
 dev
 node_modules
 app/database.db
+postgres-data/
 app/build
 yarn.lock
 yarn-error.log
 *.psd
 venv-PyIPAM/
 env__/
-.vscode/symbols.json
+.vscode/
+*/__pycache__/

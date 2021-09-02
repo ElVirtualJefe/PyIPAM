@@ -27,7 +27,7 @@ services:
 #    image: PyIPAM-postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: PyIPAM-P@ssw0rd123!
+      POSTGRES_PASSWORD: PyIPAM-Passw0rd123!
       POSTGRES_DB: PyIPAM
     image: postgres:latest
     networks:
