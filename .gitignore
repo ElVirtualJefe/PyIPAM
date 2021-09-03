@@ -11,4 +11,4 @@ yarn-error.log
 venv-PyIPAM/
 env__/
 .vscode/
-*/__pycache__/
+**/__pycache__/

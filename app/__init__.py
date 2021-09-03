@@ -11,14 +11,17 @@ from urllib.parse import quote_plus as urlquote
 app = Flask(__name__)
 
 # App Config - the minimal footprint
+app.config.from_object("config.DevelopmentConfig")
 app.config['TESTING'   ] = True 
 app.config['SECRET_KEY'] = 'S#perS3crEt_JamesBond' 
 # our database uri
-username = "postgres"
-password = urlquote("PyIPAM-P@ssw0rd123!")
-dbname = "PyIPAM"
+username = app.config["DB_USERNAME"]
+password = urlquote(app.config["DB_PASSWORD"])
+dbname = app.config["DB_NAME"]
+dbserver = app.config["DB_SERVER"]
+dbport = app.config["DB_PORT"]
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{username}:{password}@localhost:5432/{dbname}"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{username}:{password}@{dbserver}:{dbport}/{dbname}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
@@ -26,8 +29,10 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 from app import views
 
 from app.models import db
-from sqlalchemy import create_engine
+#from sqlalchemy import create_engine
+from app.models import *
 
-engine = create_engine(app.config["SQLALCHEMY_DATABASE_URI"])
-db.create_all(engine)
+#engine = create_engine(app.config["SQLALCHEMY_DATABASE_URI"])
+db.create_all()
+
 

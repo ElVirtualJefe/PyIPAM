@@ -55,6 +55,7 @@
         }
       }
     </style>
+
     <link href="/static/assets/style.css" rel="stylesheet">
 
     <!-- Specific Page CSS goes HERE -->
@@ -62,22 +63,7 @@
 
   </head>
   <body class="app">
-    <!-- @TOC -->
-    <!-- =================================================== -->
-    <!--
-      + @Page Loader
-      + @App Content
-          - #Left Sidebar
-              > $Sidebar Header
-              > $Sidebar Menu
 
-          - #Main
-              > $Topbar
-              > $App Screen Content
-    -->
-
-    <!-- @Page Loader -->
-    <!-- =================================================== -->
     <div id="loader">
       <div class="spinner"></div>
     </div>
@@ -91,27 +77,9 @@
       });
     </script>
 
-    <!-- @App Content -->
-    <!-- =================================================== -->
-    <div>
+    <div class="peers ai-s fxw-nw h-100vh">
 
-      <!-- {% include 'includes/sidebar.html' %} -->
-
-      <!-- #Main ============================ -->
-      <div class="page-container">
-
-        <!-- {% include 'includes/navigation.html' %} -->
-
-        <!-- ### $App Screen Content ### -->
-        <main class="main-content bgc-grey-100">
-          <div id="mainContent">
-
-            {% block content %}{% endblock content %}  
-          
-          </div>
-        </main>
-
-        {% include 'includes/footer.html' %}
+        {% block content %}{% endblock content %}  
 
     </div>
   

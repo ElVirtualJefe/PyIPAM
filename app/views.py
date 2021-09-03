@@ -4,7 +4,8 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 # Flask modules
-from flask   import render_template
+from app.models.subnet import subnetModel
+from flask   import Flask, request, render_template
 from jinja2  import TemplateNotFound
 
 # App modules
@@ -22,3 +23,15 @@ def index(path):
     
     except TemplateNotFound:
         return render_template('page-404.html'), 404
+
+@app.route('/response', methods=['POST'])
+def response():
+    from app.models import db
+
+    sname = request.form.get("sname")
+    new_subnet = subnetModel(name=sname)
+    db.session.add(new_subnet)
+    db.session.commit()
+
+    return f"Added {sname}!!"
+    
