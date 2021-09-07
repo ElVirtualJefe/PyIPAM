@@ -14,9 +14,9 @@ services:
       - pyipam-postgres
   # nginx:
   #   restart: always
-  #   image: "nginx:latest"
+  #   image: nginx:latest
   #   ports:
-  #     - "85:85"
+  #     - 85:85
   #   volumes:
   #     - ./nginx:/etc/nginx/conf.d
   #   networks:

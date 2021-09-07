@@ -35,3 +35,13 @@ def response():
 
     return f"Added {sname}!!"
     
+@app.route('/<path:path>')
+def catch_all(path):
+    try:
+
+        # Serve the file (if exists) from app/templates/FILE.html
+        return render_template( path + ".html" )
+    
+    except TemplateNotFound:
+        return render_template('page-404.html'), 404
+

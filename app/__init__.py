@@ -11,7 +11,8 @@ from urllib.parse import quote_plus as urlquote
 app = Flask(__name__)
 
 # App Config - the minimal footprint
-app.config.from_object("config.DevelopmentConfig")
+#app.config.from_object("config.DevelopmentConfig")
+app.config.from_object("config.TestingConfig")
 app.config['TESTING'   ] = True 
 app.config['SECRET_KEY'] = 'S#perS3crEt_JamesBond' 
 # our database uri

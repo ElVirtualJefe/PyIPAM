@@ -28,8 +28,9 @@ class ipAddressModel(db.Model):
     hostname = db.Column(db.String(64))
     macAddress = db.Column(db.String(17))
     owner = db.Column(db.String(40))
-    state_id = db.Column(UUID(True))#, db.ForeignKey('state.id'), nullable=False)
-    lastSeen = db.Column(db.DateTime)
+    state_id = db.Column(UUID(True), db.ForeignKey('addressStates.id'), nullable=False, default='5a3be258-876b-4fb3-9788-61acced67be1')
+    dateLastSeen = db.Column(db.DateTime)
+    dateLastEdited = db.Column(db.DateTime)
 
     def __repr__(self):
         return f"<id {id}>"
