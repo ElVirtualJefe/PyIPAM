@@ -11,7 +11,7 @@
             "module": "flask",
             "env": {
                 "FLASK_APP": "PyIPAM.py",
-                "FLASK_ENV": "development"
+                "FLASK_ENV": "testing"
             },
             "args": [
                 "run",
@@ -28,7 +28,7 @@
                 "pathMappings": [
                     {
                         "localRoot": "${workspaceFolder}",
-                        "remoteRoot": "/app"
+                        "remoteRoot": "/usr/src/PyIPAM"
                     }
                 ],
                 "projectType": "flask"

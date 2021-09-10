@@ -10,9 +10,15 @@ from urllib.parse import quote_plus as urlquote
 # Inject Flask magic
 app = Flask(__name__)
 
+import os;
+env = os.getenv('FLASK_ENV')
+
 # App Config - the minimal footprint
 #app.config.from_object("config.DevelopmentConfig")
-app.config.from_object("config.TestingConfig")
+if (env == "development"):
+    app.config.from_object("config.DevelopmentConfig")
+else:
+    app.config.from_object("config.TestingConfig")
 app.config['TESTING'   ] = True 
 app.config['SECRET_KEY'] = 'S#perS3crEt_JamesBond' 
 # our database uri

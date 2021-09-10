@@ -6,23 +6,23 @@ services:
     env_file: ./.env.dev
     build: .
     ports:
-      - 5000:5000
+      - 5005:5005
     networks:
       - db_network
       - web_network
     depends_on: 
       - pyipam-postgres
-  # nginx:
-  #   restart: always
-  #   image: nginx:latest
-  #   ports:
-  #     - 85:85
-  #   volumes:
-  #     - ./nginx:/etc/nginx/conf.d
-  #   networks:
-  #     - web_network
-  #   depends_on: 
-  #     - pyipam-app
+  nginx:
+    restart: always
+    image: nginx:latest
+    ports:
+      - 85:85
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - web_network
+    depends_on: 
+      - pyipam-app
   pyipam-postgres:
 #    image: PyIPAM-postgres
     environment:
