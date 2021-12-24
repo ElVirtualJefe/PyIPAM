@@ -11,6 +11,7 @@ class settingsModel(db.Model):
     __tablename__ = "settings"
 
     id = db.Column(UUID(True), primary_key=True, default=uuid.uuid4)
+    category = db.Column(db.String(24))
     name = db.Column(db.String(48))
     value = db.Column(db.String(120))
 
